@@ -1,0 +1,6 @@
+{
+	"proto": true,
+	"evil": true,
+	"browser": true,
+	"predef":["exports","module","window","require","define"]
+}
