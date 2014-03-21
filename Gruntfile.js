@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'lib/webidl.js',
+          'lib/*.js',
           'lib/interfaces/*.js',
           'lib/types/*.js'
         ],
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
     },
 
     jsbeautifier: {
-      files: ['lib/**/*.js', 'test/*-tests.js']
+      files: ['lib/*.js', 'lib/**/*.js', 'test/*-tests.js']
     },
 
     jsdoc : {
@@ -66,6 +66,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jsbeautifier');
 
   grunt.registerTask('test', ['connect', 'qunit']);
+  grunt.registerTask('tidy', ['jsbeautifier', 'jshint']);
   grunt.registerTask('default', ['jsbeautifier', 'jshint', 'test', 'uglify']);
 
 };
