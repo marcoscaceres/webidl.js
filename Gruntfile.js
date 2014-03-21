@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      all: ['lib/**/*.js', 'test/*-tests.js']
+      all: ['lib/*.js','lib/**/*.js', 'test/*-tests.js']
     },
 
     qunit: {
@@ -46,17 +46,7 @@ module.exports = function(grunt) {
 
     jsbeautifier: {
       files: ['lib/*.js', 'lib/**/*.js', 'test/*-tests.js']
-    },
-
-    jsdoc : {
-        dist : {
-            src: ['lib/**/*.js', 'test/*.js'], 
-            options: {
-                destination: 'doc'
-            }
-        }
     }
-
   });
 
   grunt.loadNpmTasks('grunt-contrib-connect');
