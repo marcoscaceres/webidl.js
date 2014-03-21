@@ -13,5 +13,9 @@
     "grunt-contrib-jshint": "*",
     "grunt-contrib-uglify": "*",
     "grunt-jsbeautifier": "*"
+  },
+  "dependencies": {
+    "requirejs": "*", 
+    "webidl2": "*"
   }
 }
