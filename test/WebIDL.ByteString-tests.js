@@ -24,14 +24,14 @@ require(['WebIDL/types/ByteString'], function() {
     QUnit.test(requirement, function() {
         QUnit.throws(
 
-        function() {
-            window.WebIDL.ByteString('\u0256');
-        }, TypeError, 'above 255 must throw.');
+            function() {
+                window.WebIDL.ByteString('\u0256');
+            }, TypeError, 'above 255 must throw.');
         QUnit.throws(
 
-        function() {
-            window.WebIDL.ByteString('a b c \u0256 d e f');
-        }, TypeError, 'above 255 must throw.');
+            function() {
+                window.WebIDL.ByteString('a b c \u0256 d e f');
+            }, TypeError, 'above 255 must throw.');
     });
 
     requirement = 'Return an IDL ByteString value whose length is the length of x, and where the value of each element is the value of the corresponding element of x.';

@@ -34,7 +34,7 @@ require(['WebIDL/types/UnrestrictedFloat'], function() {
         QUnit.strictEqual(window.WebIDL.UnrestrictedFloat(''), 0, 'empty string  is 0');
         QUnit.strictEqual(window.WebIDL.UnrestrictedFloat(' \t\n\t '), 0, 'random whitespace is 0');
         QUnit.strictEqual(window.WebIDL.UnrestrictedFloat('	123  '), 123, 'Whitespace removed is 123');
-        QUnit.strictEqual(window.WebIDL.UnrestrictedFloat('	-123.123  '), - 123.12300109863281, 'Converted to nearest float');
+        QUnit.strictEqual(window.WebIDL.UnrestrictedFloat('	-123.123  '), -123.12300109863281, 'Converted to nearest float');
     });
     requirement = 'If x is NaN, then return the IDL unrestricted float value that represents the IEEE 754 NaN value with the bit pattern 0x7fc00000 [IEEE-754].';
     QUnit.test(requirement, function() {
@@ -50,11 +50,11 @@ require(['WebIDL/types/UnrestrictedFloat'], function() {
     });
     requirement = 'If y is 2^128, return +∞.';
     QUnit.test(requirement, function() {
-        QUnit.strictEqual(window.WebIDL.UnrestrictedFloat(Math.pow(2, 128)), + Infinity, '2^128 is +Infinity');
+        QUnit.strictEqual(window.WebIDL.UnrestrictedFloat(Math.pow(2, 128)), +Infinity, '2^128 is +Infinity');
     });
     requirement = 'If y is −2^128, return −∞.';
     QUnit.test(requirement, function() {
-        QUnit.strictEqual(window.WebIDL.UnrestrictedFloat(-Math.pow(2, 128)), - Infinity, '-2^128 is -Infinity');
+        QUnit.strictEqual(window.WebIDL.UnrestrictedFloat(-Math.pow(2, 128)), -Infinity, '-2^128 is -Infinity');
     });
     requirement = 'If y is +0 and x is negative, return −0.';
     QUnit.test(requirement, function() {

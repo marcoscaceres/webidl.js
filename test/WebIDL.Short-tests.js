@@ -39,7 +39,7 @@ require(['WebIDL/types/Short'], function() {
         QUnit.strictEqual(window.WebIDL.Short(' \t\n\t '), 0, 'random whitespace is 0');
         QUnit.strictEqual(window.WebIDL.Short('	123  '), 123, 'Whitespace removed is 123');
         QUnit.strictEqual(window.WebIDL.Short('	123,123  '), 0, 'comma cuases NaN, which is 0');
-        QUnit.strictEqual(window.WebIDL.Short('	-123.123  '), - 123, 'everything after . gets dropped');
+        QUnit.strictEqual(window.WebIDL.Short('	-123.123  '), -123, 'everything after . gets dropped');
     });
 
     requirement = '[EnforceRange] If x is NaN, +∞, or −∞, then throw a TypeError.';
@@ -73,7 +73,7 @@ require(['WebIDL/types/Short'], function() {
     requirement = '[Clamp] Set x to min(max(x, −215), 215 − 1).';
     QUnit.test(requirement, function() {
         QUnit.strictEqual(window.WebIDL.Short(42767, 'Clamp'), 32767, '42767 Clamped to 32767');
-        QUnit.strictEqual(window.WebIDL.Short(-42768, 'Clamp'), - 32768, '−42768 Clamped to -32768');
+        QUnit.strictEqual(window.WebIDL.Short(-42768, 'Clamp'), -32768, '−42768 Clamped to -32768');
     });
 
     requirement = '[Clamp] Round x to the nearest integer, choosing the even integer if it lies halfway between two';
@@ -108,10 +108,10 @@ require(['WebIDL/types/Short'], function() {
 
     requirement = 'If x ≥ 215, return the IDL short value that represents the same numeric value as x − 216.';
     QUnit.test(requirement, function() {
-        QUnit.strictEqual(window.WebIDL.Short(-32768), - 32768, '-32768 is in range');
+        QUnit.strictEqual(window.WebIDL.Short(-32768), -32768, '-32768 is in range');
         QUnit.strictEqual(window.WebIDL.Short(32767), 32767, '32767 is in range');
-        QUnit.strictEqual(window.WebIDL.Short(32768), - 32768, '32768 goes to -32768');
-        QUnit.strictEqual(window.WebIDL.Short(32769), - 32767, '32769 goes to -32767');
+        QUnit.strictEqual(window.WebIDL.Short(32768), -32768, '32768 goes to -32768');
+        QUnit.strictEqual(window.WebIDL.Short(32769), -32767, '32769 goes to -32767');
         QUnit.strictEqual(window.WebIDL.Short(-32769), 32767, '-129 goes to 127');
         QUnit.strictEqual(window.WebIDL.Short(-32770), 32766, '-130 goes to 126');
         QUnit.strictEqual(window.WebIDL.Short(65536), 0, '65536 goes to 0');

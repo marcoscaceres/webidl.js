@@ -42,7 +42,7 @@ require(['WebIDL/types/Any'], function() {
         var neg0 = window.WebIDL.Any(-0);
         QUnit.strictEqual(isNegative0(neg0), true, 'negative 0 needs to remain negative');
         QUnit.strictEqual(window.WebIDL.Any(1), 1, 'needs to return 1.');
-        QUnit.strictEqual(window.WebIDL.Any(-1), - 1, 'needs to return -1.');
+        QUnit.strictEqual(window.WebIDL.Any(-1), -1, 'needs to return -1.');
         QUnit.strictEqual(window.WebIDL.Any(NaN), 0x7ff8000000000000, 'Correct bit pattern returned');
     });
     requirement = 'A String value. The IDL value is that which is obtained by following the rules for converting the String to an IDL DOMString value, as described in section 4.2.16, below.';

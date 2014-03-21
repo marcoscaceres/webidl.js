@@ -3,7 +3,7 @@ require(['WebIDL/types/Boolean'], function() {
     module('WebIDL Boolean');
 
     var requirement,
-    QUnit = window.QUnit,
+        QUnit = window.QUnit,
         WebIDL = window.WebIDL;
 
     QUnit.module('WebIDL Boolean', {

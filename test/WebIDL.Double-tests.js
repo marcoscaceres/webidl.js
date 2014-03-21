@@ -18,7 +18,7 @@ require(['WebIDL/types/Double'], function() {
         QUnit.strictEqual(window.WebIDL.Double(''), 0, 'empty string  is 0');
         QUnit.strictEqual(window.WebIDL.Double(' \t\n\t '), 0, 'random whitespace is 0');
         QUnit.strictEqual(window.WebIDL.Double('	123  '), 123, 'Whitespace removed is 123');
-        QUnit.strictEqual(window.WebIDL.Double('	-123.123  '), - 123.123, 'white space stripped');
+        QUnit.strictEqual(window.WebIDL.Double('	-123.123  '), -123.123, 'white space stripped');
     });
 
     requirement = 'If x is NaN, +Infinity or −Infinity, then throw a TypeError.';

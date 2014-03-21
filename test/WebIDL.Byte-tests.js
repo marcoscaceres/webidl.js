@@ -41,7 +41,7 @@ require(['WebIDL/types/Byte'], function() {
         QUnit.strictEqual(window.WebIDL.Byte(' \t\n\t '), 0, 'random whitespace is 0');
         QUnit.strictEqual(window.WebIDL.Byte('	123  '), 123, 'Whitespace removed is 123');
         QUnit.strictEqual(window.WebIDL.Byte('	123,123  '), 0, 'comma cuases NaN, which is 0');
-        QUnit.strictEqual(window.WebIDL.Byte('	-123.123  '), - 123, 'everything after . gets dropped');
+        QUnit.strictEqual(window.WebIDL.Byte('	-123.123  '), -123, 'everything after . gets dropped');
     });
 
     requirement = '[EnforceRange] If x is NaN, +∞, or −∞, then throw a TypeError.';
@@ -71,7 +71,7 @@ require(['WebIDL/types/Byte'], function() {
     requirement = '[Clamp] Set x to min(max(x, −27), 27 − 1).';
     QUnit.test(requirement, function() {
         QUnit.strictEqual(window.WebIDL.Byte(1000, 'Clamp'), 127, '1000 Clamped to 127');
-        QUnit.strictEqual(window.WebIDL.Byte(-1000, 'Clamp'), - 128, '-1000 Clamped to -128');
+        QUnit.strictEqual(window.WebIDL.Byte(-1000, 'Clamp'), -128, '-1000 Clamped to -128');
     });
 
     requirement = '[Clamp] Round x to the nearest integer, choosing the even integer if it lies halfway between two';
@@ -101,10 +101,10 @@ require(['WebIDL/types/Byte'], function() {
 
     requirement = 'If x ≥ 27, return the IDL byte value that represents the same numeric value as x − 28.';
     QUnit.test(requirement, function() {
-        QUnit.strictEqual(window.WebIDL.Byte(-128), - 128, '-128 is in range');
+        QUnit.strictEqual(window.WebIDL.Byte(-128), -128, '-128 is in range');
         QUnit.strictEqual(window.WebIDL.Byte(127), 127, '127 is in range');
-        QUnit.strictEqual(window.WebIDL.Byte(128), - 128, '128 goes to -128');
-        QUnit.strictEqual(window.WebIDL.Byte(129), - 127, '129 goes to -127');
+        QUnit.strictEqual(window.WebIDL.Byte(128), -128, '128 goes to -128');
+        QUnit.strictEqual(window.WebIDL.Byte(129), -127, '129 goes to -127');
         QUnit.strictEqual(window.WebIDL.Byte(-129), 127, '-129 goes to 127');
         QUnit.strictEqual(window.WebIDL.Byte(-130), 126, '-130 goes to 126');
         QUnit.strictEqual(window.WebIDL.Byte(256), 0, '256 goes to 0');

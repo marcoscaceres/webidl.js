@@ -39,7 +39,7 @@ require(['WebIDL/types/Float'], function() {
         QUnit.strictEqual(window.WebIDL.Float(''), 0, 'empty string  is 0');
         QUnit.strictEqual(window.WebIDL.Float(' \t\n\t '), 0, 'random whitespace is 0');
         QUnit.strictEqual(window.WebIDL.Float('	123  '), 123, 'Whitespace removed is 123');
-        QUnit.strictEqual(window.WebIDL.Float('	-123.123  '), - 123.12300109863281, 'Converted to nearest float');
+        QUnit.strictEqual(window.WebIDL.Float('	-123.123  '), -123.12300109863281, 'Converted to nearest float');
     });
 
     requirement = 'If x is NaN, +Infinity or −Infinity, then throw a TypeError.';
