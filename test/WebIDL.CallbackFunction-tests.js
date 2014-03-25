@@ -1,4 +1,4 @@
-require(['WebIDL/types/CallbackFunction'], function() {
+(function() {
     'use strict';
     var requirement, QUnit = window.QUnit;
 
@@ -61,4 +61,4 @@ require(['WebIDL/types/CallbackFunction'], function() {
         testInstance = new window.WebIDL.CallbackFunction(function() {}, 'Test2');
         QUnit.strictEqual(testInstance.type, 'Test2', 'The type is "Test2".');
     });
-});
+}());

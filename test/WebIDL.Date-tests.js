@@ -1,4 +1,4 @@
-require(['WebIDL/types/Date'], function() {
+(function() {
     'use strict';
     var requirement, QUnit = window.QUnit;
     module('WebIDL Date', {
@@ -75,4 +75,4 @@ require(['WebIDL/types/Date'], function() {
         QUnit.notStrictEqual(instance.value, presetDate, 'Conversion must return a different date object');
         QUnit.strictEqual(time, 1358537498904, 'Return time must be the same as the original time');
     });
-});
+}());

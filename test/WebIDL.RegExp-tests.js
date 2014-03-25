@@ -1,4 +1,4 @@
-require(['WebIDL/types/RegExp'], function() {
+(function() {
     'use strict';
 
     var requirement, QUnit = window.QUnit;
@@ -42,4 +42,4 @@ require(['WebIDL/types/RegExp'], function() {
         QUnit.strictEqual(window.WebIDL.RegExp(regex), regex, 'must be reference to same object');
         QUnit.strictEqual(instance.value, regex, 'must be reference to same object');
     });
-});
+}());

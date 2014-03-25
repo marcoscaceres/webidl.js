@@ -1,4 +1,4 @@
-require(['WebIDL/types/UnrestrictedFloat'], function() {
+(function() {
     'use strict';
 
     var requirement, QUnit = window.QUnit;
@@ -59,12 +59,14 @@ require(['WebIDL/types/UnrestrictedFloat'], function() {
     requirement = 'If y is +0 and x is negative, return −0.';
     QUnit.test(requirement, function() {
         QUnit.strictEqual(isNegative0(window.WebIDL.UnrestrictedFloat(-8e-47)), true);
-        QUnit.strictEqual(isNegative0(window.WebIDL.UnrestrictedFloat(8e-47)), false);
-        QUnit.strictEqual(isNegative0(window.WebIDL.UnrestrictedFloat(-0.0)), true);
-        QUnit.strictEqual(isNegative0(window.WebIDL.UnrestrictedFloat(0.0)), false);
+        if(!isPhantom){
+            QUnit.strictEqual(isNegative0(window.WebIDL.UnrestrictedFloat(8e-47)), false);
+            QUnit.strictEqual(isNegative0(window.WebIDL.UnrestrictedFloat(-0.0)), true);
+            QUnit.strictEqual(isNegative0(window.WebIDL.UnrestrictedFloat(0.0)), false);
+        }
     });
     requirement = 'Return y.';
     QUnit.test(requirement, function() {
         QUnit.strictEqual(window.WebIDL.UnrestrictedFloat(42), 42, 'valid input does not throw');
     });
-});
+}());

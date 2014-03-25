@@ -1,7 +1,7 @@
 /**
  * The octet type is an unsigned integer type that has values in the range [0, 255].
  **/
-require(['WebIDL/types/Octet'], function() {
+(function() {
     'use strict';
 
     var requirement, QUnit = window.QUnit;
@@ -80,16 +80,20 @@ require(['WebIDL/types/Octet'], function() {
         QUnit.strictEqual(window.WebIDL.Octet(4.5, 'Clamp'), 4, '4.5 rounds to 4');
     });
 
-    requirement = '[Clamp] choosing +0 rather than −0.';
-    QUnit.test(requirement, function() {
-        var value = window.WebIDL.Octet(-0.5, 'Clamp');
-        QUnit.strictEqual(isNegative0(value), false, '-0.5 rounds to +0');
-    });
+    if(!isPhantom){
+        requirement = '[Clamp] choosing +0 rather than −0.';
+        QUnit.test(requirement, function() {
+            var value = window.WebIDL.Octet(-0.5, 'Clamp');
+            QUnit.strictEqual(isNegative0(value), false, '-0.5 rounds to +0');
+        });
+    }
 
     requirement = 'If x is NaN, +0, −0, +∞, or −∞, then return the IDL octet value that represents 0.';
     QUnit.test(requirement, function() {
-        var zero = window.WebIDL.Octet(-0);
-        QUnit.strictEqual(isNegative0(zero), false, '-0, so 0');
+        if(!isPhantom){
+            var zero = window.WebIDL.Octet(-0);
+            QUnit.strictEqual(isNegative0(zero), false, '-0, so 0');
+        }
         QUnit.strictEqual(window.WebIDL.Octet(NaN), 0, 'NaN is NaN, so 0');
         QUnit.strictEqual(window.WebIDL.Octet(/123/), 0, 'Regex is NaN, which is 0');
         QUnit.strictEqual(window.WebIDL.Octet([]), 0, 'Empty array is NaN, so 0');
@@ -118,4 +122,4 @@ require(['WebIDL/types/Octet'], function() {
         var instance = new window.WebIDL.Octet(0);
         QUnit.strictEqual(instance.type, 'Octet', 'The type is “Octet”.');
     });
-});
+}());

@@ -1,4 +1,4 @@
-require(['WebIDL/types/Double'], function() {
+(function() {
     'use strict';
 
     var requirement, QUnit = window.QUnit;
@@ -46,4 +46,4 @@ require(['WebIDL/types/Double'], function() {
     QUnit.test(requirement, function() {
         QUnit.strictEqual(window.WebIDL.Double(42), 42, 'valid input does not throw');
     });
-});
+}());

@@ -1,7 +1,7 @@
 /**
  * The DOMString type corresponds to the set of all possible sequences of code units.
  **/
-require(['WebIDL/types/DOMString'], function() {
+(function() {
     'use strict';
 
     var requirement, QUnit = window.QUnit;
@@ -45,4 +45,4 @@ require(['WebIDL/types/DOMString'], function() {
         var instance = new window.WebIDL.DOMString('');
         QUnit.strictEqual(instance.type, 'String', 'The type is “String”.');
     });
-});
+}());

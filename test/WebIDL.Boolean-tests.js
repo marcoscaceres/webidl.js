@@ -1,4 +1,4 @@
-require(['WebIDL/types/Boolean'], function() {
+(function() {
     'use strict';
     module('WebIDL Boolean');
 
@@ -19,6 +19,7 @@ require(['WebIDL/types/Boolean'], function() {
 
     requirement = 'Let x be the result of computing ToBoolean(V).';
     QUnit.test(requirement, function() {
+        var WebIDL = window.WebIDL;
         //falsies
         QUnit.strictEqual(WebIDL.Boolean(), false, 'empty is falsy');
         QUnit.strictEqual(WebIDL.Boolean(null), false, 'null is falsy');
@@ -72,7 +73,7 @@ require(['WebIDL/types/Boolean'], function() {
 
     requirement = 'The type name of the boolean type is “Boolean”.';
     QUnit.test(requirement, function() {
-        var instance = new WebIDL.Boolean();
+        var instance = new window.WebIDL.Boolean();
         QUnit.strictEqual(instance.type, 'Boolean');
     });
-});
+}());

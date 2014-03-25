@@ -4,7 +4,7 @@
  * [RFC3629] or strings in some other 8-bit-per-code-unit encoding,
  * although this is not required.
  **/
-require(['WebIDL/types/ByteString'], function() {
+(function() {
     'use strict';
 
     var requirement, QUnit = window.QUnit;
@@ -38,5 +38,4 @@ require(['WebIDL/types/ByteString'], function() {
     QUnit.test(requirement, function() {
         QUnit.strictEqual(window.WebIDL.ByteString('test'), 'test', 'strings must be equal');
     });
-
-});
+}());

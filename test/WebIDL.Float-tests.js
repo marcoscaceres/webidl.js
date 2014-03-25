@@ -3,7 +3,7 @@
  * The Float type represents a 32-bit IEEE-754 floating point number.
  * http://dev.w3.org/2006/webapi/WebIDL/#es-float
  **/
-require(['WebIDL/types/Float'], function() {
+(function() {
     'use strict';
 
     var requirement, QUnit = window.QUnit;
@@ -81,11 +81,13 @@ require(['WebIDL/types/Float'], function() {
         QUnit.strictEqual(window.WebIDL.Float(340282350000000000000000000000000000000), 340282346638528859811704183484516925440, 'Rounds down to largest available');
     });
 
-    requirement = 'If y is +0 and x is negative, return −0.';
-    QUnit.test(requirement, function() {
-        QUnit.strictEqual(isNegative0(window.WebIDL.Float(-8e-47)), true);
-        QUnit.strictEqual(isNegative0(window.WebIDL.Float(8e-47)), false);
-    });
+    if(!isPhantom){
+        requirement = 'If y is +0 and x is negative, return −0.';
+        QUnit.test(requirement, function() {
+            QUnit.strictEqual(isNegative0(window.WebIDL.Float(-0)), true);
+            QUnit.strictEqual(isNegative0(window.WebIDL.Float(0)), false);
+        });
+    }
     requirement = 'Return y.';
     QUnit.test(requirement, function() {
         QUnit.strictEqual(window.WebIDL.Float(42), 42, 'valid input does not throw');
@@ -97,4 +99,4 @@ require(['WebIDL/types/Float'], function() {
         QUnit.strictEqual(instance.type, 'Float', 'The type is “Float”.');
     });
 
-});
+}());

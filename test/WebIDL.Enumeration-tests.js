@@ -1,4 +1,4 @@
-require(['WebIDL/types/Enumeration'], function() {
+(function() {
     'use strict';
     var requirement, QUnit = window.QUnit;
 
@@ -38,4 +38,4 @@ require(['WebIDL/types/Enumeration'], function() {
     QUnit.test(requirement, function() {
         QUnit.strictEqual(window.WebIDL.Enumeration('TestType', ['a', 'c', 'f'], 'a'), 'a', "expecte 'a' to be returned");
     });
-});
+}());

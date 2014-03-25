@@ -1,4 +1,4 @@
-require(['WebIDL/types/Object'], function() {
+(function() {
     'use strict';
     var requirement, QUnit = window.QUnit,
         WebIDL = window.WebIDL;
@@ -45,9 +45,10 @@ require(['WebIDL/types/Object'], function() {
     requirement = 'Return the IDL object value that is a reference to the same object as V.';
     QUnit.test(requirement, function() {
         var obj = {},
+            WebIDL = window.WebIDL,
             inst = new WebIDL.Object(WebIDL.Object);
         QUnit.strictEqual(inst.value, WebIDL.Object, 'Object in, same object out');
         inst.value = obj;
         QUnit.strictEqual(inst.value, obj, 'Object in, same object out');
     });
-});
+}());

@@ -2,14 +2,18 @@
 <meta charset="utf-8">
 <title>webidl.js Unit Tests</title>
 <link rel="stylesheet" href="lib/qunit-1.10.0.css">
-<script src="/node_modules/requirejs/require.js"></script>
-
-<script src="/dist/webidl-0.0.1.min.js"></script>
+<script src="../node_modules/requirejs/require.js"></script> <!-- data-main="../lib/config"-->
+<script>
+//PhantomJS's JS engine has issues with +0 and -0, so we don't test for those.
+window.isPhantom = (window.navigator.userAgent.match("PhantomJS")) ? true : false; 
+</script>
+<script src="../dist/webidl.js"></script>
 
 <div id="qunit"></div>
 
 <script src="http://code.jquery.com/qunit/qunit-1.10.0.js"></script>
 
+<script src="WebIDL.Any-tests.js"></script>
 <script src="WebIDL.Boolean-tests.js"></script>
 <script src="WebIDL.Object-tests.js"></script>
 <script src="WebIDL.Byte-tests.js"></script>
@@ -20,7 +24,6 @@
 <script src="WebIDL.DOMString-tests.js"></script>
 <script src="WebIDL.Double-tests.js"></script>
 <script src="WebIDL.UnrestrictedFloat-tests.js"></script>
-<script src="WebIDL.Any-tests.js"></script>
 <script src="WebIDL.CallbackFunction-tests.js"></script>  
 <script src="WebIDL.Enumeration-tests.js"></script>  
 <script src="WebIDL.ByteString-tests.js"></script>  

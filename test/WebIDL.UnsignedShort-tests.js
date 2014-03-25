@@ -2,7 +2,7 @@
  * The unsigned short type is an unsigned integer type that has values in the range [0, 65535].
  **/
 
-require(['WebIDL/types/UnsignedShort'], function() {
+(function() {
     'use strict';
 
     var requirement, QUnit = window.QUnit;
@@ -80,19 +80,23 @@ require(['WebIDL/types/UnsignedShort'], function() {
         QUnit.strictEqual(window.WebIDL.UnsignedShort(3.5, 'Clamp'), 4, '3.5 rounds to 4');
         QUnit.strictEqual(window.WebIDL.UnsignedShort(4.5, 'Clamp'), 4, '4.5 rounds to 4');
     });
-    requirement = '[Clamp] choosing +0 rather than −0.';
-    QUnit.test(requirement, function() {
-        var value = window.WebIDL.UnsignedShort(-0.5, 'Clamp');
-        QUnit.strictEqual(isNegative0(value), false, '-0.5 rounds to +0');
-    });
+    if(!isPhantom){
+        requirement = '[Clamp] choosing +0 rather than −0.';
+        QUnit.test(requirement, function() {
+            var value = window.WebIDL.UnsignedShort(-0.5, 'Clamp');
+            QUnit.strictEqual(isNegative0(value), false, '-0.5 rounds to +0');
+        });
+    }
     requirement = '[Clamp] Return the IDL unsigned short value that represents the same numeric value as x.';
     QUnit.test(requirement, function() {
         QUnit.strictEqual(window.WebIDL.UnsignedShort(42, 'Clamp'), 42, 'valid input does not throw');
     });
     requirement = 'Set x to ToUint16(x) -> If number is NaN, +0, −0, +∞, or −∞, return +0.';
     QUnit.test(requirement, function() {
-        var zero = window.WebIDL.UnsignedShort(-0);
-        QUnit.strictEqual(isNegative0(zero), false, '-0, so 0');
+        if(!isPhantom){
+            var zero = window.WebIDL.UnsignedShort(-0);
+            QUnit.strictEqual(isNegative0(zero), false, '-0, so 0');
+        }
         QUnit.strictEqual(window.WebIDL.UnsignedShort(NaN), 0, 'NaN is NaN, so 0');
         QUnit.strictEqual(window.WebIDL.UnsignedShort(/123/), 0, 'Regex is NaN, which is 0');
         QUnit.strictEqual(window.WebIDL.UnsignedShort([]), 0, 'Empty array is NaN, so 0');
@@ -118,4 +122,4 @@ require(['WebIDL/types/UnsignedShort'], function() {
         var instance = new window.WebIDL.UnsignedShort(1);
         QUnit.strictEqual(instance.type, 'UnsignedShort', 'The type is “UnsignedShort”.');
     });
-});
+}());

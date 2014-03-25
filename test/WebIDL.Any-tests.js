@@ -1,4 +1,4 @@
-require(['WebIDL/types/Any'], function() {
+(function() {
     'use strict';
 
     var requirement, QUnit = window.QUnit;
@@ -61,4 +61,4 @@ require(['WebIDL/types/Any'], function() {
         var instance = new window.WebIDL.Any('');
         QUnit.strictEqual(instance.type, 'Any', 'The type is “Any”.');
     });
-});
+}());
