@@ -5,15 +5,14 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-      },
-      dist: {
-        src: [
-          'lib/*.js','lib/**/*.js'
-        ],
-        dest: 'dist/<%= pkg.name %>-<%= pkg.version %>.min.js'
+    requirejs: {
+      compile: {
+        options: {
+          name: 'config',
+          baseUrl: "lib/",
+          mainConfigFile: "lib/config.js",
+          out: "dist/webidl.js"
+        }
       }
     },
 
@@ -50,11 +49,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-jsbeautifier');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
 
   grunt.registerTask('test', ['connect', 'qunit']);
   grunt.registerTask('tidy', ['jsbeautifier', 'jshint']);
-  grunt.registerTask('default', ['jsbeautifier', 'jshint', 'test', 'uglify']);
+  grunt.registerTask('default', ['jsbeautifier', 'jshint', 'requirejs', 'test']);
 
 };
