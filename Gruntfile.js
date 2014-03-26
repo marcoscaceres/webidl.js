@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
   'use strict';
-
+  var allFilesAndTests = ['lib/**/*.js', 'test/*-tests.js'];
   grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      all: ['lib/*.js','lib/**/*.js', 'test/*-tests.js']
+      all: allFilesAndTests
     },
 
     qunit: {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
     },
 
     jsbeautifier: {
-      files: ['lib/*.js', 'lib/**/*.js', 'test/*-tests.js']
+      files: allFilesAndTests
     }
   });
 
