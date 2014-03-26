@@ -2,11 +2,15 @@
 <meta charset="utf-8">
 <title>webidl.js Unit Tests</title>
 <link rel="stylesheet" href="lib/qunit-1.10.0.css">
-<script src="../node_modules/requirejs/require.js"></script> <!-- data-main="../lib/config"-->
+<!-- data-main="../lib/config"-->
+
+<!--script src="../node_modules/requirejs/require.js" data-main="../lib/config"> </script--> 
+
 <script>
 //PhantomJS's JS engine has issues with +0 and -0, so we don't test for those.
 window.isPhantom = (window.navigator.userAgent.match("PhantomJS")) ? true : false; 
 </script>
+<script src="../node_modules/requirejs/require.js"></script> 
 <script src="../dist/webidl.js"></script>
 
 <div id="qunit"></div>
