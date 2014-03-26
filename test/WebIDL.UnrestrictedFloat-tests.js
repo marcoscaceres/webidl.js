@@ -59,7 +59,7 @@
     requirement = 'If y is +0 and x is negative, return −0.';
     QUnit.test(requirement, function() {
         QUnit.strictEqual(isNegative0(window.WebIDL.UnrestrictedFloat(-8e-47)), true);
-        if(!isPhantom){
+        if (!isPhantom) {
             QUnit.strictEqual(isNegative0(window.WebIDL.UnrestrictedFloat(8e-47)), false);
             QUnit.strictEqual(isNegative0(window.WebIDL.UnrestrictedFloat(-0.0)), true);
             QUnit.strictEqual(isNegative0(window.WebIDL.UnrestrictedFloat(0.0)), false);

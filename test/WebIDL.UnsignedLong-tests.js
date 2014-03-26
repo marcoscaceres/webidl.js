@@ -76,7 +76,7 @@
     requirement = '[Clamp] Round x to the nearest integer, choosing the even integer if it lies halfway between two';
     QUnit.test(requirement, function() {
         var zero = window.WebIDL.UnsignedLong(-0.5, 'Clamp');
-        if(!isPhantom){
+        if (!isPhantom) {
             QUnit.strictEqual(isNegative0(0), false, '-0.5 rounds to +0');
         }
         QUnit.strictEqual(window.WebIDL.UnsignedLong(0.5, 'Clamp'), 0, '0.5 rounds to 0');
@@ -84,7 +84,7 @@
         QUnit.strictEqual(window.WebIDL.UnsignedLong(4.5, 'Clamp'), 4, '4.5 rounds to 4');
     });
 
-    if(!isPhantom){
+    if (!isPhantom) {
         requirement = '[Clamp] choosing +0 rather than −0.';
         QUnit.test(requirement, function() {
             var value = window.WebIDL.UnsignedLong(-0.5, 'Clamp');
@@ -100,7 +100,7 @@
     requirement = 'Set x to ToUint32(x) -> If number is NaN, +0, −0, +∞, or −∞, return +0.';
     QUnit.test(requirement, function() {
         var zero = window.WebIDL.UnsignedLong(-0);
-        if(!isPhantom){
+        if (!isPhantom) {
             QUnit.strictEqual(isNegative0(zero), false, '-0, so 0');
         }
         QUnit.strictEqual(window.WebIDL.UnsignedLong(NaN), 0, 'NaN is NaN, so 0');

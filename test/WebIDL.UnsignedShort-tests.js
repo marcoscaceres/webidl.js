@@ -80,7 +80,7 @@
         QUnit.strictEqual(window.WebIDL.UnsignedShort(3.5, 'Clamp'), 4, '3.5 rounds to 4');
         QUnit.strictEqual(window.WebIDL.UnsignedShort(4.5, 'Clamp'), 4, '4.5 rounds to 4');
     });
-    if(!isPhantom){
+    if (!isPhantom) {
         requirement = '[Clamp] choosing +0 rather than −0.';
         QUnit.test(requirement, function() {
             var value = window.WebIDL.UnsignedShort(-0.5, 'Clamp');
@@ -93,7 +93,7 @@
     });
     requirement = 'Set x to ToUint16(x) -> If number is NaN, +0, −0, +∞, or −∞, return +0.';
     QUnit.test(requirement, function() {
-        if(!isPhantom){
+        if (!isPhantom) {
             var zero = window.WebIDL.UnsignedShort(-0);
             QUnit.strictEqual(isNegative0(zero), false, '-0, so 0');
         }

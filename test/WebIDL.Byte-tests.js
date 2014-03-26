@@ -81,7 +81,7 @@
         QUnit.strictEqual(window.WebIDL.Byte(4.5, 'Clamp'), 4, '4.5 rounds to 4');
     });
 
-    if(!isPhantom){
+    if (!isPhantom) {
         requirement = '[Clamp] choosing +0 rather than −0.';
         QUnit.test(requirement, function() {
             var value = window.WebIDL.Byte(-0.5, 'Clamp');
@@ -92,7 +92,7 @@
     requirement = 'If x is NaN, +0, −0, +∞, or −∞, then return the IDL byte value that represents 0.';
     QUnit.test(requirement, function() {
         var zero = window.WebIDL.Byte(-0);
-        if(!isPhantom){
+        if (!isPhantom) {
             QUnit.strictEqual(isNegative0(zero), false, '-0, so 0');
         }
         QUnit.strictEqual(window.WebIDL.Byte(NaN), 0, 'NaN is NaN, so 0');

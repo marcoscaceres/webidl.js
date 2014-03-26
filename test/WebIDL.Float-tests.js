@@ -81,7 +81,7 @@
         QUnit.strictEqual(window.WebIDL.Float(340282350000000000000000000000000000000), 340282346638528859811704183484516925440, 'Rounds down to largest available');
     });
 
-    if(!isPhantom){
+    if (!isPhantom) {
         requirement = 'If y is +0 and x is negative, return −0.';
         QUnit.test(requirement, function() {
             QUnit.strictEqual(isNegative0(window.WebIDL.Float(-0)), true);

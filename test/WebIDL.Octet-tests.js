@@ -80,7 +80,7 @@
         QUnit.strictEqual(window.WebIDL.Octet(4.5, 'Clamp'), 4, '4.5 rounds to 4');
     });
 
-    if(!isPhantom){
+    if (!isPhantom) {
         requirement = '[Clamp] choosing +0 rather than −0.';
         QUnit.test(requirement, function() {
             var value = window.WebIDL.Octet(-0.5, 'Clamp');
@@ -90,7 +90,7 @@
 
     requirement = 'If x is NaN, +0, −0, +∞, or −∞, then return the IDL octet value that represents 0.';
     QUnit.test(requirement, function() {
-        if(!isPhantom){
+        if (!isPhantom) {
             var zero = window.WebIDL.Octet(-0);
             QUnit.strictEqual(isNegative0(zero), false, '-0, so 0');
         }

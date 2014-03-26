@@ -83,14 +83,14 @@
         QUnit.strictEqual(window.WebIDL.Short(4.5, 'Clamp'), 4, '4.5 rounds to 4');
     });
 
-    if(!isPhantom){
+    if (!isPhantom) {
         requirement = '[Clamp] choosing +0 rather than −0.';
         QUnit.test(requirement, function() {
             var value = window.WebIDL.Short(-0.5, 'Clamp');
             QUnit.strictEqual(isNegative0(value), false, '-0.5 rounds to +0');
         });
     }
-    
+
     requirement = '[Clamp] Return the IDL short value that represents the same numeric value as x.';
     QUnit.test(requirement, function() {
         QUnit.strictEqual(window.WebIDL.Short(42, 'Clamp'), 42, 'valid input just returns');
@@ -99,7 +99,7 @@
     requirement = 'If x is NaN, +0, −0, +∞, or −∞, then return the IDL short value that represents 0.';
     QUnit.test(requirement, function() {
         var zero = window.WebIDL.Short(-0);
-        if(!isPhantom){
+        if (!isPhantom) {
             QUnit.strictEqual(isNegative0(zero), false, '-0, so 0');
         }
         QUnit.strictEqual(window.WebIDL.Short(NaN), 0, 'NaN is NaN, so 0');
